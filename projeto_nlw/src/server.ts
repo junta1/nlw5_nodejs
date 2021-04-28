@@ -1,18 +1,11 @@
 import express, { response } from "express";
-import "./database"
+import "./database";
+import {routes} from "./routes";
 
 const app = express();
 
-app.get("/", (request, response) => {
-  return response.json({
-    message: "Olá NLW 05!"
-  });
-});
+app.use(express.json());//habilitando o uso de json no body
 
-app.post("/", (request, response) => {
-  return response.json({
-    message: "Usuário salvo com sucesso!"
-  });
-});
+app.use(routes);
 
 app.listen(3333, () => console.log("Seerver is running on port 3333"));
